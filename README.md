@@ -35,6 +35,10 @@ Tabela Fato: fato_vendas (Métricas de faturamento, quantidade, status e SLA).
 
 Tabelas Dimensão: dim_clientes e dim_produtos.
 
+## 📷 Interface do Dashboard
+
+![LogiFast Retail Dashboard](dashboard.jpg)
+
 Data Visualization (Power BI):
 
 Layout estilizado em conceito Modern SaaS / Minimalist (fundo tom creme/off-white com contraste em cartões flutuantes e azul marinho profundo).
