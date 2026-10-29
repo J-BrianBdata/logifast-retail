@@ -22,17 +22,14 @@ NUM_REGISTROS = 1500  # Quantidade de vendas simuladas
 # ==========================================
 # 2. GERAÇÃO DA DIMENSÃO: CLIENTES
 # ==========================================
-bairros_sp = [
-    'Centro', 'Moema', 'Pinheiros', 'Tatuapé',
-    'Itaquera', 'Santo Amaro', 'Lapa', 'Santana'
-]
+
+bairros_sp = ['Centro', 'Moema', 'Pinheiros', 'Tatuapé', 'Itaquera', 'Santo Amaro', 'Lapa', 'Santana']
 clientes_ids = [f'CLI{str(i).zfill(4)}' for i in range(1, 201)]
 
 df_clientes = pd.DataFrame({
     'cliente_id': clientes_ids,
     'regiao_sp': [random.choice(bairros_sp) for _ in range(200)],
-    'tipo_cliente': np.random.choice(['Varejo', 'Atacado'], size=200, p=[0.8, 0.2])
-})
+    'tipo_cliente': np.random.choice(['Varejo', 'Atacado'], size=200, p=[0.8, 0.2])})
 
 # ==========================================
 # 3. GERAÇÃO DA DIMENSÃO: PRODUTOS
@@ -40,8 +37,7 @@ df_clientes = pd.DataFrame({
 categorias = {
     'Eletrônicos': [('Fone Bluetooth', 150.0), ('Carregador Rápido', 80.0), ('Smartwatch', 350.0)],
     'Alimentos/Laticínios': [('Kit Iogurtes Premium', 45.0), ('Queijo Artesanal 500g', 38.0), ('Manteiga Extra', 22.0)],
-    'Acessórios': [('Mochila Impermeável', 180.0), ('Suporte Celular Moto', 55.0), ('Capa Protetora', 30.0)]
-}
+    'Acessórios': [('Mochila Impermeável', 180.0), ('Suporte Celular Moto', 55.0), ('Capa Protetora', 30.0)]}
 
 produtos_data = []
 prod_id_counter = 1
@@ -61,10 +57,8 @@ df_produtos = pd.DataFrame(produtos_data)
 # 4. GERAÇÃO DA TABELA FATO: VENDAS
 # ==========================================
 data_inicio = datetime(2026, 1, 1)
-datas_pedido = [
-    data_inicio + timedelta(days=random.randint(0, 290), hours=random.randint(8, 20))
-    for _ in range(NUM_REGISTROS)
-]
+datas_pedido = [data_inicio + timedelta(days=random.randint(0, 290), hours=random.randint(8, 20))
+    for _ in range(NUM_REGISTROS)]
 
 pedidos_data = []
 for i in range(NUM_REGISTROS):
@@ -91,8 +85,7 @@ for i in range(NUM_REGISTROS):
         'data_pedido': dt_ped.strftime('%Y-%m-%d %H:%M:%S'),
         'data_entrega': dt_ent.strftime('%Y-%m-%d %H:%M:%S') if dt_ent else None,
         'tempo_entrega_horas': tempo_entrega_h,
-        'status_pedido': status
-    })
+        'status_pedido': status})
 
 df_vendas = pd.DataFrame(pedidos_data)
 print("✅ [ETL] Dados gerados e transformados com sucesso em memória!")
