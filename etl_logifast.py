@@ -7,7 +7,7 @@ from sqlalchemy import create_engine
 # ==========================================
 # 1. CONFIGURAÇÕES E CREDENCIAIS
 # ==========================================
-# Insira abaixo a senha do seu MySQL Workbench
+
 SENHA_MYSQL = "SUA_SENHA_AQUI"
 DB_NAME = "logifast_db"
 
