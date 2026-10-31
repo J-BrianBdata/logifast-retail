@@ -11,7 +11,7 @@ from sqlalchemy import create_engine
 SENHA_MYSQL = "SUA_SENHA_AQUI"
 DB_NAME = "logifast_db"
 
-print("🔄 [ETL] Iniciando o pipeline de dados da LogiFast Retail...")
+print("[ETL] Iniciando o pipeline de dados da LogiFast Retail...")
 
 # Semente de aleatoriedade para garantir que os dados sejam reprodutíveis
 np.random.seed(42)
@@ -88,7 +88,7 @@ for i in range(NUM_REGISTROS):
         'status_pedido': status})
 
 df_vendas = pd.DataFrame(pedidos_data)
-print("✅ [ETL] Dados gerados e transformados com sucesso em memória!")
+print("[ETL] Dados gerados e transformados com sucesso em memória!")
 
 # ==========================================
 # 5. CARGA DOS DADOS NO MYSQL (LOAD)
@@ -103,8 +103,8 @@ try:
     df_produtos.to_sql('dim_produtos', con=engine, if_exists='append', index=False)
     df_vendas.to_sql('fato_vendas', con=engine, if_exists='append', index=False)
 
-    print("🚀 [ETL] Carga finalizada com sucesso! Tabelas populadas no MySQL.")
+    print("[ETL] Carga finalizada com sucesso! Tabelas populadas no MySQL.")
 
 except Exception as e:
-    print(f"❌ [ETL] Erro durante a conexão ou carga no MySQL: {e}")
+    print(f"[ETL] Erro durante a conexão ou carga no MySQL: {e}")
     
